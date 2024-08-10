@@ -1,38 +1,49 @@
-import express, { Request } from "express";
+import { Request, Response } from "express";
 import prisma from "../../db/db.config";
-import { Decimal } from "@prisma/client/runtime/library";
 
-// user add items in the inventory
-
-interface CustomRequest extends express.Request {
-  user: {
+interface CustomRequest extends Request {
+  user?: {
+    id: number;
     email: string;
+    name: string | null;
+    password: string;
+    is_verified: boolean;
+    otp: number | null;
+    last_login: string | null;
+    created_at: string;
+    updated_at: string | null;
   };
 }
 
-export const addItem = async (req: CustomRequest, res: express.Response) => {
+export const addItem = async (req: CustomRequest, res: Response) => {
+  const { name, description, price, quantity } = req.body;
   const user = await prisma.user.findUnique({
     where: {
-      email: req.user.email,
+      email: req.user?.email,
     },
   });
+
   if (user) {
-    const { itemName, description, quantity, price } = req.body;
-    const newItem = await prisma.inventoryItem.create({
-      data: {
-        name: itemName,
-        description: description,
-        quantity: quantity,
-        price: new Decimal(price),
-        user: {
-          connect: {
-            id: user.id,
+    if (user.is_verified) {
+      const item = await prisma.inventoryItem.create({
+        data: {
+          name,
+          description,
+          price,
+          quantity,
+          user: {
+            connect: {
+              email: user.email,
+            },
           },
         },
-      },
-    });
-    res.json({ message: "Item added", newItem });
+      });
+
+      res.json({ message: "Item added successfully", item });
+    } else {
+      res.status(403).json({ message: "Please verify your email address" });
+    }
   } else {
-    res.json({ message: "User not found" });
+    res.status(404).json({ message: "User not found" });
   }
 };
