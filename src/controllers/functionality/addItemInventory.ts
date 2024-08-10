@@ -16,7 +16,7 @@ interface CustomRequest extends Request {
 }
 
 export const addItem = async (req: CustomRequest, res: Response) => {
-  const { name, description, price, quantity } = req.body;
+  const { name, description, priceperkg, quantitybykg } = req.body;
   const user = await prisma.user.findUnique({
     where: {
       email: req.user?.email,
@@ -29,8 +29,8 @@ export const addItem = async (req: CustomRequest, res: Response) => {
         data: {
           name,
           description,
-          price,
-          quantity,
+          priceperkg,
+          quantitybykg,
           user: {
             connect: {
               email: user.email,
