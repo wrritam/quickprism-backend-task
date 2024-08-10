@@ -11,13 +11,13 @@ export const sendMail = async (
       port: 465,
       secure: true,
       auth: {
-        user: "verify.rentride@gmail.com",
+        user: "ritamislive9@gmail.com",
         pass: process.env.password,
       },
     });
 
     const mailOptions = {
-      from: "Rent & Ride",
+      from: "Test",
       to: email,
       subject: mailSubject,
       html: content,
