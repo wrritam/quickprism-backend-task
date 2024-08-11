@@ -12,6 +12,7 @@ import { addItem } from "../controllers/functionality/addItemInventory";
 import { getAllItems } from "../controllers/functionality/getAllItems";
 import { createBill } from "../controllers/functionality/billing";
 import { getAlltheBills } from "../controllers/functionality/getAllTheBills";
+import { getBillById } from "../controllers/functionality/getBillById";
 
 const router = express.Router();
 
@@ -26,5 +27,6 @@ router.post("/add-item", authentication, addItem);
 router.get("/get-all-items", authentication, getAllItems);
 router.post("/create-bill", authentication, createBill);
 router.get("/get-all-bills", authentication, getAlltheBills);
+router.get("/get-all-bills/:id", authentication, getBillById);
 
 export default router;
