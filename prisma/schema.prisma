@@ -46,8 +46,8 @@ model Bill {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   items     BillItem[]
-  user        User      @relation(fields: [userId], references: [id])
-  userId      Int
+  user        User      @relation(fields: [userEmail], references: [email])
+  userEmail      String
 }
 
 model BillItem {

@@ -10,6 +10,8 @@ import { authentication } from "../middleware/authenticator";
 
 import { addItem } from "../controllers/functionality/addItemInventory";
 import { getAllItems } from "../controllers/functionality/getAllItems";
+import { createBill } from "../controllers/functionality/billing";
+
 const router = express.Router();
 
 router.post("/register", register);
@@ -21,5 +23,6 @@ router.post("/verify-updation", verifyUpdation);
 
 router.post("/add-item", authentication, addItem);
 router.get("/get-all-items", authentication, getAllItems);
+router.post("/create-bill", authentication, createBill);
 
 export default router;
