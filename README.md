@@ -32,3 +32,18 @@ This repository contains the backend code for the QuickPrism task. The backend i
    ```bash
    git clone https://github.com/wrritam/quickprism-backend-task.git
    cd quickprism-backend-task
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+
+3. **Create a .env file in the root directory and add the following variables**
+   ```bash
+   PORT = a port number
+   DATABASE_URL = your postgres database connection string
+   hiddenKey = A secret keyword for jwt purposes
+   password = generate it from your google account for smtp send mail purposes
+
+4. **Start the development server**
+   ```bash
+   npm start
