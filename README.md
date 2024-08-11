@@ -52,4 +52,6 @@ This repository contains the backend code for the QuickPrism task. The backend i
 
   - For the postman api documentation [Click Here](https://documenter.getpostman.com/view/21414570/2sA3s3JBfm)
   - Backend deployed link on vercel - [link](https://quickprism-backend-task.onrender.com/).
+  - Please use a valid email address while registering.
+  - Here is one set of login credential for testing ` email - bruceritamwayne02@gmail.com` and `password - newpassword`
 
