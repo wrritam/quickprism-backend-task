@@ -11,6 +11,7 @@ import { authentication } from "../middleware/authenticator";
 import { addItem } from "../controllers/functionality/addItemInventory";
 import { getAllItems } from "../controllers/functionality/getAllItems";
 import { createBill } from "../controllers/functionality/billing";
+import { getAlltheBills } from "../controllers/functionality/getAllTheBills";
 
 const router = express.Router();
 
@@ -24,5 +25,6 @@ router.post("/verify-updation", verifyUpdation);
 router.post("/add-item", authentication, addItem);
 router.get("/get-all-items", authentication, getAllItems);
 router.post("/create-bill", authentication, createBill);
+router.get("/get-all-bills", authentication, getAlltheBills);
 
 export default router;
