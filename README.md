@@ -44,7 +44,11 @@ This repository contains the backend code for the QuickPrism task. The backend i
    hiddenKey = A secret keyword for jwt purposes
    password = generate it from your google account for smtp send mail purposes
 
-4. **Start the development server**
+4. **Migrate the prisma database**
+   ```bash
+   npx prisma migrate dev --name init
+
+6. **Start the development server**
    ```bash
    npm start
 
